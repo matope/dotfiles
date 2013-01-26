@@ -204,4 +204,6 @@ export SVN_EDITOR=/usr/bin/vim
 export PATH=/opt/local/bin:/opt/local/sbin/:$PATH
 export MANPATH=/opt/local/man:$MANPATH
 
-eval "$(rbenv init -)"
+if [ -e rbenv ]; then
+  eval "$(rbenv init -)"
+fi
