@@ -11,5 +11,5 @@ link() {
 
 DOTFILES_ROOT=`cd $(dirname $0); pwd`
 
-link $DOTFILES_ROOT/.screenrc, $HOME/.screenrc
-link $DOTFILES_ROOT/.zshrc, $HOME/.zshrc
+link $DOTFILES_ROOT/.screenrc $HOME/.screenrc
+link $DOTFILES_ROOT/.zshrc $HOME/.zshrc
