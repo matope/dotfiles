@@ -118,17 +118,6 @@ linux*)
     ;;
 esac
 
-alias la="ls -a"
-alias lf="ls -F"
-alias ll="ls -l"
-
-alias du="du -h"
-alias df="df -h"
-
-alias su="su -l"
-
-alias screen="/Users/yasuharu/local/bin/screen"
-
 case "${OSTYPE}" in
 darwin*)
     alias updateports="sudo port selfupdate; sudo port outdated"
