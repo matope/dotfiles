@@ -17,3 +17,4 @@ DOTFILES_ROOT=`cd $(dirname $0); pwd`
 
 ask_and_link $DOTFILES_ROOT/.screenrc $HOME/.screenrc
 ask_and_link $DOTFILES_ROOT/.zshrc $HOME/.zshrc
+ask_and_link $DOTFILES_ROOT/.tmux.com $HOME/.tmux.conf
