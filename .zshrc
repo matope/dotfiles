@@ -193,6 +193,8 @@ export SVN_EDITOR=/usr/bin/vim
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 export MANPATH=/opt/local/man:$MANPATH
 
-if [ -e rbenv ]; then
+
+# rbenvが入っていれば初期化実行
+if which rbenv > /dev/null; then
   eval "$(rbenv init -)"
 fi
