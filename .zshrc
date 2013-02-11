@@ -195,6 +195,6 @@ export MANPATH=/opt/local/man:$MANPATH
 
 
 # rbenvが入っていれば初期化実行
-if which rbenv > /dev/null 2&>1; then
+if which rbenv > /dev/null 2>&1; then
   eval "$(rbenv init -)"
 fi
