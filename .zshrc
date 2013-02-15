@@ -198,3 +198,27 @@ export MANPATH=/opt/local/man:$MANPATH
 if which rbenv > /dev/null 2>&1; then
   eval "$(rbenv init -)"
 fi
+
+#============================
+# tmux
+#============================
+alias tmux='tmux -2'
+
+
+# from http://keme.hatenablog.com/entry/2012/10/20/011327
+# ssh 時に新規ウィンドウを作る
+# ssh_tmux() {
+#     echo "SSH_TMUX"
+#     ssh_cmd="ssh $@"
+#     tmux new-window -n "$*" "$ssh_cmd"
+# }
+# 
+# if [ $TERM = "screen-256color" ] ; then
+#     if [ $? -eq 0 ] ; then
+#         alias ssh=ssh_tmux
+#     fi
+# fi
+
+function chpwd() { ls }
+
+#alias bash="/usr/local/bin/bash"
