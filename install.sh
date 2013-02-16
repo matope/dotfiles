@@ -14,6 +14,9 @@ ask_and_link() {
 }
 
 DOTFILES_ROOT=`cd $(dirname $0); pwd`
+git submodule init
+git submodule foreach 'git pull origin master'
+git submodule update
 
 ask_and_link $DOTFILES_ROOT/.screenrc $HOME/.screenrc
 ask_and_link $DOTFILES_ROOT/.zshrc $HOME/.zshrc
