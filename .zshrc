@@ -30,6 +30,23 @@ case ${UID} in
     ;;
 esac
 
+# ブランチ名をRPROMPTで表示
+autoload -Uz add-zsh-hook
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' formats '(%s)-[%b]'
+zstyle ':vcs_info:*' actionformats '(%s)-[%b|%a]'
+_vcs_precmd () {
+    psvar=()
+    LANG=en_US.UTF-8 vcs_info
+    [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
+}
+add-zsh-hook precmd _vcs_precmd
+RPROMPT="%1(v|%F{green}%1v%f|)"
+
+autoload -U promptinit
+promptinit
+prompt adam2
+
 # auto change directory
 #
 setopt auto_cd
