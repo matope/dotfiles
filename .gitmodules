@@ -1,3 +1,6 @@
 [submodule ".tmux.d/tmux-powerline"]
 	path = .tmux.d/tmux-powerline
 	url = git://github.com/erikw/tmux-powerline.git
+[submodule ".tmux.d/pane-maximize"]
+	path = .tmux.d/pane-maximize
+	url = git://github.com/pi8027/pane-maximize.git
