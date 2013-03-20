@@ -124,7 +124,7 @@ autoload zed
 setopt complete_aliases     # aliased ls needs if file/dir completions work
 
 alias where="command -v"
-alias j="jobs -l"
+#alias j="jobs -l"
 
 case "${OSTYPE}" in
 freebsd*|darwin*)
@@ -212,10 +212,12 @@ export MANPATH=/opt/local/man:$MANPATH
 
 
 # rbenvが入っていれば初期化実行
+export PATH="$HOME/.rbenv/bin:$PATH"
 if which rbenv > /dev/null 2>&1; then
   eval "$(rbenv init -)"
 fi
 
+#
 #============================
 # tmux
 #============================
