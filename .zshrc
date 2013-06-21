@@ -207,7 +207,7 @@ esac
 
 export SVN_EDITOR=/usr/bin/vim
 
-export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+export PATH=/opt/local/bin:/opt/local/sbin:~/bin:~/local/bin:$PATH
 export MANPATH=/opt/local/man:$MANPATH
 
 
