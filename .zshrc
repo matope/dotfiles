@@ -209,9 +209,11 @@ export PATH=/opt/local/bin:/opt/local/sbin:~/bin:~/local/bin:$PATH
 export MANPATH=/opt/local/man:$MANPATH
 export LD_LIBRARY_PATH=~/local/lib
 
+export JAVA_HOME=$(/usr/libexec/java_home)
+
 # rbenvが入っていれば初期化実行
 export PATH="$HOME/.rbenv/bin:$PATH"
-if which rbenv > /dev/null 2>&1; then
+if which rbenv > /dev/null 2>&1; then # コマンドが存在すれば
   eval "$(rbenv init -)"
 fi
 
