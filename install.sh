@@ -25,3 +25,5 @@ ask_and_link $DOTFILES_ROOT/.zshrc $HOME/.zshrc
 ask_and_link $DOTFILES_ROOT/.tmux.conf $HOME/.tmux.conf
 ask_and_link $DOTFILES_ROOT/.tmux-powerlinerc $HOME/.tmux-powerlinerc
 ask_and_link $DOTFILES_ROOT/.tmux.d $HOME/.tmux.d
+
+exit 0
