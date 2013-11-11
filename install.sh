@@ -26,4 +26,6 @@ ask_and_link $DOTFILES_ROOT/.tmux.conf $HOME/.tmux.conf
 ask_and_link $DOTFILES_ROOT/.tmux-powerlinerc $HOME/.tmux-powerlinerc
 ask_and_link $DOTFILES_ROOT/.tmux.d $HOME/.tmux.d
 
+success "Install successfully done."
+
 exit 0
