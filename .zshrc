@@ -209,7 +209,7 @@ export PATH=/opt/local/bin:/opt/local/sbin:~/bin:~/local/bin:$PATH
 export MANPATH=/opt/local/man:$MANPATH
 export LD_LIBRARY_PATH=~/local/lib
 
-if [ -f `/usr/libexec/java_home` ]; then
+if [ -f /usr/libexec/java_home ]; then
   export JAVA_HOME=$(/usr/libexec/java_home)
 fi
 
