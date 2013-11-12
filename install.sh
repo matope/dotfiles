@@ -5,7 +5,7 @@ success () {
 }
 
 ask_and_link() {
-  ln -si $1 $2
+  ln -sibv $1 $2
 #  /bin/echo -n "Make link $1 -> $2 ? [y/n]"
 #  read ANS
 #  if [ $ANS = 'y' -o $ANS = 'yes' ]; then
