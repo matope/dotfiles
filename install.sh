@@ -19,7 +19,7 @@ git submodule init
 git submodule foreach 'git pull origin master'
 git submodule update
 
-ask_and_link $DOTFILES_ROOT/.bash_profile $HOME/.bash_profile
+#ask_and_link $DOTFILES_ROOT/.bash_profile $HOME/.bash_profile
 ask_and_link $DOTFILES_ROOT/.screenrc $HOME/.screenrc
 ask_and_link $DOTFILES_ROOT/.zshrc $HOME/.zshrc
 
