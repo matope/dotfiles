@@ -243,3 +243,10 @@ alias tmux='tmux -2'
 function chpwd() { ls }
 
 #alias bash="/usr/local/bin/bash"
+
+#================================
+# Golang
+#================================
+export PATH=$PATH:/usr/local/go/bin
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
