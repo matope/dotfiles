@@ -101,9 +101,13 @@ setopt share_history        # share command history data
 
 ## Completion configuration
 #
+if [ -e /usr/local/share/zsh-completions ];then
+  fpath=(/usr/local/share/zsh-completions $fpath)
+fi
 fpath=(~/.zsh/functions/Completion ${fpath})
 autoload -U compinit
 compinit
+
 
 
 ## zsh editor
@@ -250,3 +254,8 @@ function chpwd() { ls }
 export GOPATH=$HOME/go
 export GOROOT=/usr/local/go
 export PATH=$PATH:$GOPATH/bin:$GOROOT/bin
+
+#================================
+# Docker
+#================================
+export DOCKER_HOST=tcp://
