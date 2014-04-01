@@ -214,7 +214,7 @@ export MANPATH=/opt/local/man:$MANPATH
 export LD_LIBRARY_PATH=~/local/lib
 
 if [ -f /usr/libexec/java_home ]; then
-  export JAVA_HOME=$(/usr/libexec/java_home)
+  export JAVA_HOME=$(/usr/libexec/java_home 2>/dev/null)
 fi
 
 # rbenvが入っていれば初期化実行
