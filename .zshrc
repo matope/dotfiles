@@ -259,3 +259,12 @@ export PATH=$PATH:$GOPATH/bin:$GOROOT/bin
 # Docker
 #================================
 export DOCKER_HOST=tcp://
+
+#================================
+# url-quote-magic
+#================================
+#================================
+# URL Quote 
+#================================
+autoload -U url-quote-magic
+zle -N self-insert url-quote-magic
