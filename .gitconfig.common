@@ -1,0 +1,16 @@
+[color]
+  status = auto
+  diff = auto
+  branch = auto
+  interactive = auto
+  grep = auto
+[alias]
+  s = status --branch --short
+  d = diff --color-words
+  grep = grep --line-number --show-function --color --heading --break
+  g = log  --decorate --graph --oneline
+  gg = log --decorate --graph
+  ggg = log --decorate --graph --stat
+  gggg = log --decorate --graph --stat --patch
+  colordiff = difftool -y -x "colordiff -y -W $COLUMNS" | less -R
+  vimdiff = difftool --tool vimdiff
