@@ -4,13 +4,20 @@
   branch = auto
   interactive = auto
   grep = auto
+[color "status"]
+  added = blue 
+  changed = yellow 
+  untracked = white ul
+[color "diff"]
+  meta = cyan
+  frag = magenta ul
 [alias]
   s = status --branch --short
   d = diff --color-words
   grep = grep --line-number --show-function --color --heading --break
-  g = log  --decorate --graph --oneline
-  gg = log --decorate --graph
-  ggg = log --decorate --graph --stat
-  gggg = log --decorate --graph --stat --patch
+  lg   = log --graph --format=format:'%C(yellow)%h%C(reset) %C(green)(%ar)%C(reset) %C(auto)%s%C(reset) %C(cyan)%an%C(reset)%C(auto)%d%C(reset)'
+  g = log --decorate --graph --oneline
+  gg = log --decorate --graph --stat
+  ggg = log --decorate --graph --stat --patch
   colordiff = difftool -y -x "colordiff -y -W $COLUMNS" | less -R
   vimdiff = difftool --tool vimdiff
