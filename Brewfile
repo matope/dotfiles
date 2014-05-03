@@ -15,4 +15,4 @@ install reattach-to-user-namespace
 install ack
 install ag
 install tree
-install node
+# install node This should be install via pkg
