@@ -10,9 +10,9 @@ install brew-cask
 # インストール
 install vim --with-lua
 install zsh-completions
+install tmux
+install reattach-to-user-namespace
 install ack
 install ag
-install tmux
-install reattach-to-user-namespace # tmux 2 clipboard
 install tree
 install node
