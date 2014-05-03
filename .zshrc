@@ -268,3 +268,7 @@ export DOCKER_HOST=tcp://
 #================================
 autoload -U url-quote-magic
 zle -N self-insert url-quote-magic
+
+if [ -e /usr/local/bin/vim ];then
+  alias vim=/usr/local/bin/vim
+fi
