@@ -27,6 +27,7 @@ ln -siv  $DOTFILES_ROOT/.tmux.conf        $HOME/.tmux.conf
 ln -siv  $DOTFILES_ROOT/.tmux-powerlinerc $HOME/.tmux-powerlinerc
 ln -siv  $DOTFILES_ROOT/.tmux.d           $HOME/.tmux.d
 
+brew bundle
 success "Install successfully done."
 
 exit 0
