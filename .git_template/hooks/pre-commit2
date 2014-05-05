@@ -1,0 +1,38 @@
+#!/bin/bash
+
+# このスクリプトがしていること
+# 
+# 1. originのドメインを調べる
+# 2. origin用の設定ファイルが存在するか調べる
+# 3. その設定ファイルが--localのinclude.pathに含まれているか調べる
+# 4. 含まれていなければ追加する
+
+ORIGIN_URL=`git config --get remote.origin.url`
+
+# Detect origin domain name
+if [[ $ORIGIN_URL =~ ^git@.* ]]; then
+  ORIGIN_DOMAIN=`echo $ORIGIN_URL | sed -e 's/^git@\([^:]*\).*/\1/'`
+elif [[ $ORIGIN_URL =~ ^https?://.* ]]; then
+  ORIGIN_DOMAIN=`echo $ORIGIN_URL | sed -e 's/^https:\/\/\([^\/]*\).*$/\1/'`
+elif [[ $ORIGIN_URL =~ ^ssh://.* ]]; then
+  ORIGIN_DOMAIN=`echo $ORIGIN_URL | sed -e 's/^ssh:\/\/[^@]*@\([^\/]*\).*$/\1/'`
+elif [[ $ORIGIN_URL =~ ^.*@.*:.* ]]; then
+  ORIGIN_DOMAIN=`echo $ORIGIN_URL | sed -e 's/[^@]*@\([^:]*\).*$/\1/'`
+else
+  echo "byte"
+  exit 
+fi
+
+# get domain specific configures
+DOMAIN_SPECIFIC_CONFFILE=~/.gitconfig.$ORIGIN_DOMAIN 
+
+if [ -e $DOMAIN_SPECIFIC_CONFFILE ]; then
+  # domain conf file exists
+  if git config --local --get-all include.path | grep -Fx "$DOMAIN_SPECIFIC_CONFFILE"; then
+    exit # already included
+  else
+    echo "git config --local --add include.path \"$DOMAIN_SPECIFIC_CONFFILE\""
+    git config --local --add include.path "$DOMAIN_SPECIFIC_CONFFILE"
+    git config -l --file $DOMAIN_SPECIFIC_CONFFILE
+  fi
+fi

@@ -1,0 +1,46 @@
+#!/bin/bash
+
+if [ "`git config --get-regexp --local "user.*"`" != "" ];then
+  exit # user.* are already configured at --local
+fi
+
+ORIGIN_URL=`git config --get remote.origin.url`
+
+# Detect origin domain name
+if [[ $ORIGIN_URL =~ ^git@.* ]]; then
+  ORIGIN_DOMAIN=`echo $ORIGIN_URL | sed -e 's/^git@\([^:]*\).*/\1/'`
+elif [[ $ORIGIN_URL =~ ^https?://.* ]]; then
+  ORIGIN_DOMAIN=`echo $ORIGIN_URL | sed -e 's/^https:\/\/\([^\/]*\).*$/\1/'`
+elif [[ $ORIGIN_URL =~ ^ssh://.* ]]; then
+  ORIGIN_DOMAIN=`echo $ORIGIN_URL | sed -e 's/^ssh:\/\/[^@]*@\([^\/]*\).*$/\1/'`
+elif [[ $ORIGIN_URL =~ ^.*@.*:.* ]]; then
+  ORIGIN_DOMAIN=`echo $ORIGIN_URL | sed -e 's/[^@]*@\([^:]*\).*$/\1/'`
+else
+  exit 
+fi
+
+# get domain specific configures
+DOMAIN_SPECIFIC_CONFFILE="$HOME/.gitconfig.$ORIGIN_DOMAIN"
+
+
+if [ -e $DOMAIN_SPECIFIC_CONFFILE ]; then
+
+  # Copying settings
+  echo "Copying 'user.*' settings form \"${DOMAIN_SPECIFIC_CONFFILE}\"."
+
+  new_name=`git config --file $DOMAIN_SPECIFIC_CONFFILE --get user.name`
+  if [ "$new_name" != "" ];then
+    echo "git config --local user.name $new_name"
+    `git config --local user.name $new_name >/dev/null`
+  fi
+
+  new_email=`git config --file $DOMAIN_SPECIFIC_CONFFILE --get user.email`
+  if [ "$new_email" != "" ];then
+    echo "git config --local user.email $new_email"
+    `git config --local user.email $new_email >/dev/null`
+  fi
+
+  echo "Commit aborted and user.* are set successfully. Please try again."
+  exit 1
+
+fi

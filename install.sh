@@ -18,9 +18,11 @@ ln -siv  $DOTFILES_ROOT/.zshrc            $HOME/.zshrc
 
 ln -siv  $DOTFILES_ROOT/.gitconfig.common $HOME/.gitconfig.common
 ln -siv  $DOTFILES_ROOT/.gitignore.global $HOME/.gitignore.global
+ln -siv  $DOTFILES_ROOT/.git_template $HOME/.git_template
 if which git > /dev/null 2>&1; then
   git config --global include.path      ~/.gitconfig.common
   git config --global core.excludesfile ~/.gitignore.global
+  git config --global init.templatedir ~/.git_template
 fi
 
 ln -siv  $DOTFILES_ROOT/.tmux.conf        $HOME/.tmux.conf
