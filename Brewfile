@@ -16,4 +16,5 @@ install ack
 install ag
 install tree
 install ctags
+install ant
 # install node This should be install via pkg
