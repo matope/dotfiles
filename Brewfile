@@ -17,4 +17,6 @@ install ag
 install tree
 install ctags
 install ant
+install libxml2
+install watch
 # install node This should be install via pkg
