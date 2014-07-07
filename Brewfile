@@ -2,6 +2,7 @@
 tap homebrew/binary
 tap homebrew/dupes
 tap homebrew/versions
+tap peco/peco
 
 # homebrew-caskのインストール
 tap phinze/homebrew-cask
@@ -19,4 +20,5 @@ install ctags
 install ant
 install libxml2
 install watch
+install peco
 # install node This should be install via pkg
