@@ -274,3 +274,48 @@ zle -N self-insert url-quote-magic
 if [ -e /usr/local/bin/vim ];then
   alias vim=/usr/local/bin/vim
 fi
+
+#================================
+# cdr
+#================================
+autoload -Uz is-at-least
+if is-at-least 4.3.11
+then
+  autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
+  add-zsh-hook chpwd chpwd_recent_dirs
+  zstyle ':chpwd:*' recent-dirs-max 5000
+  zstyle ':chpwd:*' recent-dirs-default yes
+  zstyle ':completion:*' recent-dirs-insert both
+fi
+
+
+
+#================================
+# peco
+#================================
+
+function peco_select_history() {
+    local tac
+    if which tac > /dev/null; then
+        tac="tac"
+    else
+        tac="tail -r"
+    fi
+    BUFFER=$(fc -l -n 1 | eval $tac | peco --query "$LBUFFER")
+    CURSOR=$#BUFFER             # move cursor
+    zle -R -c                   # refresh
+}
+setopt hist_ignore_all_dups
+zle -N peco_select_history
+bindkey '^R' peco_select_history
+
+function peco-cd () {
+    local selected_dir=$(find ~/ -type d | peco)
+    if [ -n "$selected_dir" ]; then
+        BUFFER="cd ${selected_dir}"
+        zle accept-line
+    fi
+    zle clear-screen
+}
+zle -N peco-cd
+bindkey '^x^f' peco-cd
