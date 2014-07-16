@@ -20,6 +20,7 @@ install ant
 install libxml2
 install watch
 install tig
+install hub
 
 tap peco/peco
 install peco

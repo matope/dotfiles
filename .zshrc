@@ -309,13 +309,13 @@ setopt hist_ignore_all_dups
 zle -N peco_select_history
 bindkey '^R' peco_select_history
 
-function peco-cd () {
-    local selected_dir=$(find ~/ -type d | peco)
+function peco-cdr () {
+    local selected_dir=$(cdr -l | awk '{ print $2 }' | peco)
     if [ -n "$selected_dir" ]; then
         BUFFER="cd ${selected_dir}"
         zle accept-line
     fi
     zle clear-screen
 }
-zle -N peco-cd
-bindkey '^x^f' peco-cd
+zle -N peco-cdr
+bindkey '^@' peco-cdr

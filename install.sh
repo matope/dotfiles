@@ -26,6 +26,8 @@ fi
 ln -siv  $DOTFILES_ROOT/.tmux.conf        $HOME/.tmux.conf
 ln -siv  $DOTFILES_ROOT/.tmux.d           $HOME/.tmux.d
 
+ln -siv  $DOTFILES_ROOT/.tigrc            $HOME/.tigrc
+
 brew bundle
 success "Install successfully done."
 
