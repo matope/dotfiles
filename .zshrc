@@ -258,6 +258,12 @@ export GOROOT=/usr/local/go
 export PATH=$PATH:$GOPATH/bin:$GOROOT/bin
 
 #================================
+# Linuxbrew
+#================================
+export PATH="$HOME/.linuxbrew/bin:$PATH"
+export LD_LIBRARY_PATH="$HOME/.linuxbrew/lib:$LD_LIBRARY_PATH"
+
+#================================
 # Docker
 #================================
 export DOCKER_HOST=tcp://
