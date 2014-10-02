@@ -9,7 +9,9 @@ install brew-cask
 
 # インストール
 install vim --with-lua
+install zsh
 install zsh-completions
+install ruby
 install tmux
 install reattach-to-user-namespace
 install ack
@@ -24,4 +26,3 @@ install hub
 
 tap peco/peco
 install peco
-# install node This should be install via pkg
