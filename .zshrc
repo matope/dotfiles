@@ -32,18 +32,7 @@ case ${UID} in
     ;;
 esac
 
-# ブランチ名をRPROMPTで表示
-autoload -Uz add-zsh-hook
-autoload -Uz vcs_info
-zstyle ':vcs_info:*' formats '(%s)-[%b]'
-zstyle ':vcs_info:*' actionformats '(%s)-[%b|%a]'
-_vcs_precmd () {
-    psvar=()
-    LANG=en_US.UTF-8 vcs_info
-    [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
-}
-add-zsh-hook precmd _vcs_precmd
-RPROMPT="%1(v|%F{green}%1v%f|)"
+
 
 autoload -U promptinit
 promptinit
@@ -225,7 +214,13 @@ if which rbenv > /dev/null 2>&1; then # コマンドが存在すれば
   eval "$(rbenv init -)"
 fi
 
-#
+#============================
+# sed
+#============================
+if [ -e /usr/local/bin/gsed ];then
+  alias sed='gsed'
+fi
+
 #============================
 # tmux
 #============================
@@ -325,3 +320,24 @@ function peco-cdr () {
 }
 zle -N peco-cdr
 bindkey '^@' peco-cdr
+
+
+#================================
+# vcs_info
+#================================
+
+# ブランチ名をRPROMPTで表示
+autoload -Uz add-zsh-hook
+autoload -Uz vcs_info
+setopt PROMPT_SUBST
+
+zstyle ':vcs_info:*' formats '(%s)-[%b] %m'
+zstyle ':vcs_info:*' actionformats '(%s)-[%b|%a]'
+_vcs_precmd () { vcs_info }
+add-zsh-hook precmd _vcs_precmd
+RPROMPT='%F{green}${vcs_info_msg_0_}%f'
+
+zstyle ':vcs_info:git+set-message:*' hooks git-config-user
+function +vi-git-config-user(){
+  hook_com[misc]+=`git config user.email`
+}

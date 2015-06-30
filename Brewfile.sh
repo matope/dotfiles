@@ -24,6 +24,6 @@ brew install watch
 brew install tig
 brew install hub
 
-brew tap peco/peco
+#brew tap peco/peco
 brew install peco
 # install node This should be install via pkg
