@@ -200,7 +200,7 @@ esac
 
 export SVN_EDITOR=/usr/bin/vim
 
-export PATH=/opt/local/bin:/opt/local/sbin:~/bin:~/local/bin:$PATH
+export PATH=/opt/local/bin:/opt/local/sbin:~/bin:~/local/bin:~/bin:$PATH
 export MANPATH=/opt/local/man:$MANPATH
 export LD_LIBRARY_PATH=~/local/lib
 
@@ -227,20 +227,6 @@ fi
 alias tmux='tmux -2'
 
 
-# from http://keme.hatenablog.com/entry/2012/10/20/011327
-# ssh 時に新規ウィンドウを作る
-# ssh_tmux() {
-#     echo "SSH_TMUX"
-#     ssh_cmd="ssh $@"
-#     tmux new-window -n "$*" "$ssh_cmd"
-# }
-# 
-# if [ $TERM = "screen-256color" ] ; then
-#     if [ $? -eq 0 ] ; then
-#         alias ssh=ssh_tmux
-#     fi
-# fi
-
 function chpwd() { ls }
 
 #alias bash="/usr/local/bin/bash"
@@ -249,8 +235,10 @@ function chpwd() { ls }
 # Golang
 #================================
 export GOPATH=$HOME/go
-export GOROOT=/usr/local/go
 export PATH=$PATH:$GOPATH/bin:$GOROOT/bin
+
+alias go1.3.3="GOROOT=$GOPATH/gobin/go1.3.3/go/ $GOPATH/gobin/go1.3.3/go/bin/go"
+alias go1.4.1="GOROOT=$GOPATH/gobin/go1.4.1/go/ $GOPATH/gobin/go1.4.1/go/bin/go"
 
 #================================
 # Linuxbrew
@@ -341,3 +329,8 @@ zstyle ':vcs_info:git+set-message:*' hooks git-config-user
 function +vi-git-config-user(){
   hook_com[misc]+=`git config user.email`
 }
+
+#================================
+# s3curl
+#================================
+alias s3curl.pl="LC_ALL=C s3curl.pl"
