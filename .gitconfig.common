@@ -11,6 +11,8 @@
 [color "diff"]
   meta = cyan
   frag = magenta ul
+[core]
+  excludesfile = ~/.gitignore
 [alias]
   s = status --branch --short
   d = diff --color-words
