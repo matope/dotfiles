@@ -1,18 +1,16 @@
 # users generic .zshrc file for zsh(1)
 
-## Environment variable configuration
-#
-# LANG
-#
-export LANG=ja_JP.UTF-8
+autoload -U promptinit
+promptinit
+prompt adam2
 
+## Environment variable configuration
+export LANG=ja_JP.UTF-8
 export EDITOR=vim
 
 
 ## Default shell configuration
-#
 # set prompt
-#
 autoload colors
 colors
 case ${UID} in
@@ -32,34 +30,17 @@ case ${UID} in
     ;;
 esac
 
-
-
-autoload -U promptinit
-promptinit
-prompt adam2
-
-# auto change directory
-#
+# "cd" を省略可能
 setopt auto_cd
-
-# auto directory pushd that you can get dirs list by cd -[tab]
-#
+# cd -[tab] で移動履歴に移動
 setopt auto_pushd
-
-# command correct edition before each completion attempt
-#
+# コマンドのスペルミスを指摘
 setopt correct
-
-# compacked complete list display
-#
+# 補完候補をコンパクトに表示
 setopt list_packed
-
-# no remove postfix slash of command line
-#
+# パス保管候補の末尾のスラッシュを省略しない
 setopt noautoremoveslash
-
-# no beep sound when complete list displayed
-#
+# 補完候補の表示時にbeepを鳴らさない
 setopt nolistbeep
 
 
@@ -333,4 +314,4 @@ function +vi-git-config-user(){
 #================================
 # s3curl
 #================================
-alias s3curl.pl="LC_ALL=C s3curl.pl"
+alias s3curl="LC_ALL=C s3curl.pl"
