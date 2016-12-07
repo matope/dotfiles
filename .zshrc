@@ -52,7 +52,6 @@ setopt nolistbeep
 bindkey -e
 
 # historical backward/forward search with linehead string binded to ^P/^N
-#
 autoload history-search-end
 zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end history-search-end
@@ -63,7 +62,6 @@ bindkey "\\en" history-beginning-search-forward-end
 
 
 ## Command history configuration
-#
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
@@ -72,7 +70,6 @@ setopt share_history        # share command history data
 
 
 ## Completion configuration
-#
 if [ -e /usr/local/share/zsh-completions ];then
   fpath=(/usr/local/share/zsh-completions $fpath)
 fi
@@ -83,7 +80,6 @@ compinit
 
 
 ## zsh editor
-#
 autoload zed
 
 
@@ -189,27 +185,12 @@ if [ -f /usr/libexec/java_home ]; then
   export JAVA_HOME=$(/usr/libexec/java_home 2>/dev/null)
 fi
 
-# rbenvが入っていれば初期化実行
-export PATH="$HOME/.rbenv/bin:$PATH"
-if which rbenv > /dev/null 2>&1; then # コマンドが存在すれば
-  eval "$(rbenv init -)"
-fi
-
-#============================
-# sed
-#============================
-if [ -e /usr/local/bin/gsed ];then
-  alias sed='gsed'
-fi
-
 #============================
 # tmux
 #============================
 alias tmux='tmux -2'
 
-
 function chpwd() { ls }
-
 #alias bash="/usr/local/bin/bash"
 
 #================================
@@ -217,9 +198,6 @@ function chpwd() { ls }
 #================================
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin:$GOROOT/bin
-
-alias go1.3.3="GOROOT=$GOPATH/gobin/go1.3.3/go/ $GOPATH/gobin/go1.3.3/go/bin/go"
-alias go1.4.1="GOROOT=$GOPATH/gobin/go1.4.1/go/ $GOPATH/gobin/go1.4.1/go/bin/go"
 
 #================================
 # Linuxbrew
@@ -234,9 +212,6 @@ export DOCKER_HOST=tcp://
 
 #================================
 # url-quote-magic
-#================================
-#================================
-# URL Quote 
 #================================
 autoload -U url-quote-magic
 zle -N self-insert url-quote-magic
@@ -263,7 +238,6 @@ fi
 #================================
 # peco
 #================================
-
 function peco_select_history() {
     local tac
     if which tac > /dev/null; then
@@ -304,8 +278,6 @@ bindkey '^H' peco-hostname
 #================================
 # vcs_info
 #================================
-
-# ブランチ名をRPROMPTで表示
 autoload -Uz add-zsh-hook
 autoload -Uz vcs_info
 setopt PROMPT_SUBST
