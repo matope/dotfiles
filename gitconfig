@@ -1,3 +1,6 @@
+[user]
+	email = matope.ono@gmail.com
+	name = matope
 [color]
   status = auto
   diff = auto
@@ -11,8 +14,6 @@
 [color "diff"]
   meta = cyan
   frag = magenta ul
-[core]
-  excludesfile = ~/.gitignore
 [alias]
   s = status --branch --short
   d = diff --color-words

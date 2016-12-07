@@ -25,22 +25,10 @@ ln -siv  $DOTFILES_ROOT/.tmux.conf        $HOME/.tmux.conf
 #======
 # git
 #======
-ln -siv  $DOTFILES_ROOT/.gitconfig.common $HOME/.gitconfig.common
 if which git > /dev/null 2>&1; then
-  git config --global include.path      ~/.gitconfig.common
+  git config --global include.path      $DOTFILES_ROOT/gitconfig
+  git config --global core.excludesfile $DOTFILES_ROOT/gitignore_global
 fi
-
-ln -siv  $DOTFILES_ROOT/.gitignore $HOME/.gitignore
-if which git > /dev/null 2>&1; then
-  git config --global core.excludesfile ~/.gitignore
-fi
-
-# 一旦はずす。
-#ln -siv  $DOTFILES_ROOT/.git_template $HOME/.git_template
-#if which git > /dev/null 2>&1; then
-#  git config --global init.templatedir ~/.git_template
-#fi
-
 
 #======
 # homebrew
