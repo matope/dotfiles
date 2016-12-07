@@ -290,6 +290,16 @@ function peco-cdr () {
 zle -N peco-cdr
 bindkey '^@' peco-cdr
 
+function peco-hostname() {
+  local selected_hosts=$(cat ~/.ssh/known_hosts | awk -F'[ ,]+' '{print $1}' | peco)
+  if [ -n "$selected_hosts" ]; then
+      BUFFER="$BUFFER${selected_hosts}"
+      CURSOR=$#BUFFER             # move cursor
+  fi
+}
+
+zle -N peco-hostname
+bindkey '^H' peco-hostname
 
 #================================
 # vcs_info
