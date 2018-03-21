@@ -118,9 +118,6 @@ esac
 
 
 # FROM .bashrc
-
-export SVN_EDITOR=/usr/bin/vim
-
 export PATH=/opt/local/bin:/opt/local/sbin:~/bin:~/local/bin:~/bin:$PATH
 export MANPATH=/opt/local/man:$MANPATH
 export LD_LIBRARY_PATH=~/local/lib
@@ -143,10 +140,6 @@ export LD_LIBRARY_PATH="$HOME/.linuxbrew/lib:$LD_LIBRARY_PATH"
 autoload -U url-quote-magic
 zle -N self-insert url-quote-magic
 
-if [ -e /usr/local/bin/vim ];then
-  alias vim=/usr/local/bin/vim
-fi
-
 # cdr
 autoload -Uz is-at-least
 if is-at-least 4.3.11
@@ -158,11 +151,7 @@ then
   zstyle ':completion:*' recent-dirs-insert both
 fi
 
-
-
-#================================
 # peco
-#================================
 function peco_select_history() {
     local tac
     if which tac > /dev/null; then
@@ -200,25 +189,19 @@ function peco-hostname() {
 zle -N peco-hostname
 bindkey '^H' peco-hostname
 
-#================================
 # vcs_info
-#================================
 autoload -Uz add-zsh-hook
 autoload -Uz vcs_info
 setopt PROMPT_SUBST
-
 zstyle ':vcs_info:*' formats '(%s)-[%b] %m'
 zstyle ':vcs_info:*' actionformats '(%s)-[%b|%a]'
 _vcs_precmd () { vcs_info }
 add-zsh-hook precmd _vcs_precmd
 RPROMPT='%F{green}${vcs_info_msg_0_}%f'
-
 zstyle ':vcs_info:git+set-message:*' hooks git-config-user
 function +vi-git-config-user(){
   hook_com[misc]+=`git config user.email`
 }
 
-#================================
 # s3curl
-#================================
 alias s3curl="LC_ALL=C s3curl.pl"
