@@ -22,11 +22,7 @@ setopt noautoremoveslash
 setopt nolistbeep
 
 
-## Keybind configuration
-#
-# emacs like keybind (e.x. Ctrl-a goes to head of a line and Ctrl-e goes 
-#   to end of it)
-#
+# emacs 風キーバインド
 bindkey -e
 
 # historical backward/forward search with linehead string binded to ^P/^N
@@ -123,20 +119,14 @@ then
 fi
 
 # peco
-function peco_select_history() {
-    local tac
-    if which tac > /dev/null; then
-        tac="tac"
-    else
-        tac="tail -r"
-    fi
-    BUFFER=$(fc -l -n 1 | eval $tac | peco --query "$LBUFFER")
-    CURSOR=$#BUFFER             # move cursor
-    zle -R -c                   # refresh
+function peco-history-selection() {
+    BUFFER=`history -n 1 | tail -r  | awk '!a[$0]++' | peco`
+    CURSOR=$#BUFFER
+    zle reset-prompt
 }
-setopt hist_ignore_all_dups
-zle -N peco_select_history
-bindkey '^R' peco_select_history
+
+zle -N peco-history-selection
+bindkey '^R' peco-history-selection
 
 function peco-cdr () {
     local selected_dir=$(cdr -l | awk '{ print $2 }' | peco)
