@@ -8,28 +8,6 @@ prompt adam2
 export LANG=ja_JP.UTF-8
 export EDITOR=vim
 
-
-## Default shell configuration
-# set prompt
-autoload colors
-colors
-case ${UID} in
-0)
-    PROMPT="%B%{${fg[red]}%}%/#%{${reset_color}%}%b "
-    PROMPT2="%B%{${fg[red]}%}%_#%{${reset_color}%}%b "
-    SPROMPT="%B%{${fg[red]}%}%r is correct? [n,y,a,e]:%{${reset_color}%}%b "
-    [ -n "${REMOTEHOST}${SSH_CONNECTION}" ] && 
-        PROMPT="%{${fg[cyan]}%}$(echo ${HOST%%.*} | tr '[a-z]' '[A-Z]') ${PROMPT}"
-    ;;
-*)
-    PROMPT="%{${fg[red]}%}%/%%%{${reset_color}%} "
-    PROMPT2="%{${fg[red]}%}%_%%%{${reset_color}%} "
-    SPROMPT="%{${fg[red]}%}%r is correct? [n,y,a,e]:%{${reset_color}%} "
-    [ -n "${REMOTEHOST}${SSH_CONNECTION}" ] && 
-        PROMPT="%{${fg[cyan]}%}$(echo ${HOST%%.*} | tr '[a-z]' '[A-Z]') ${PROMPT}"
-    ;;
-esac
-
 # "cd" を省略可能
 setopt auto_cd
 # cd -[tab] で移動履歴に移動
@@ -70,14 +48,8 @@ setopt share_history        # share command history data
 
 
 ## Completion configuration
-if [ -e /usr/local/share/zsh-completions ];then
-  fpath=(/usr/local/share/zsh-completions $fpath)
-fi
-fpath=(~/.zsh/functions/Completion ${fpath})
 autoload -U compinit
 compinit
-
-
 
 ## zsh editor
 autoload zed
@@ -96,7 +68,6 @@ autoload zed
 setopt complete_aliases     # aliased ls needs if file/dir completions work
 
 alias where="command -v"
-#alias j="jobs -l"
 
 case "${OSTYPE}" in
 freebsd*|darwin*)
@@ -106,33 +77,6 @@ linux*)
     alias ls="ls --color"
     ;;
 esac
-
-case "${OSTYPE}" in
-darwin*)
-    alias updateports="sudo port selfupdate; sudo port outdated"
-    alias portupgrade="sudo port upgrade installed"
-    ;;
-freebsd*)
-    case ${UID} in
-    0)
-        updateports() 
-        {
-            if [ -f /usr/ports/.portsnap.INDEX ]
-            then
-                portsnap fetch update
-            else
-                portsnap fetch extract update
-            fi
-            (cd /usr/ports/; make index)
-
-            portversion -v -l \<
-        }
-        alias appsupgrade='pkgdb -F && BATCH=YES NO_CHECKSUM=YES portupgrade -a'
-        ;;
-    esac
-    ;;
-esac
-
 
 ## terminal configuration
 #
@@ -185,34 +129,17 @@ if [ -f /usr/libexec/java_home ]; then
   export JAVA_HOME=$(/usr/libexec/java_home 2>/dev/null)
 fi
 
-#============================
 # tmux
-#============================
-alias tmux='tmux -2'
-
 function chpwd() { ls }
-#alias bash="/usr/local/bin/bash"
 
-#================================
 # Golang
-#================================
-export GOPATH=$HOME/go
-export PATH=$PATH:$GOPATH/bin:$GOROOT/bin
+export PATH=$PATH:$HOME/go/bin:$GOROOT/bin
 
-#================================
 # Linuxbrew
-#================================
 export PATH="$HOME/.linuxbrew/bin:$PATH"
 export LD_LIBRARY_PATH="$HOME/.linuxbrew/lib:$LD_LIBRARY_PATH"
 
-#================================
-# Docker
-#================================
-export DOCKER_HOST=tcp://
-
-#================================
 # url-quote-magic
-#================================
 autoload -U url-quote-magic
 zle -N self-insert url-quote-magic
 
@@ -220,9 +147,7 @@ if [ -e /usr/local/bin/vim ];then
   alias vim=/usr/local/bin/vim
 fi
 
-#================================
 # cdr
-#================================
 autoload -Uz is-at-least
 if is-at-least 4.3.11
 then
