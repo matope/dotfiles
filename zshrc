@@ -38,14 +38,16 @@ bindkey "^n" history-beginning-search-forward-end
 bindkey "\\ep" history-beginning-search-backward-end
 bindkey "\\en" history-beginning-search-forward-end
 
-
 ## Command history configuration
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
-setopt hist_ignore_dups     # ignore duplication command history list
-setopt share_history        # share command history data
 
+# history の重複を無視
+setopt hist_ignore_dups
+
+# コマンド履歴をターミナル間で共有
+setopt share_history
 
 ## Completion configuration
 autoload -U compinit
@@ -54,21 +56,14 @@ compinit
 ## zsh editor
 autoload zed
 
-
-## Prediction configuration
-#
-#autoload predict-on
-#predict-off
-
-
-## Alias configuration
-#
+# Alias configuration
 # expand aliases before completing
-#
-setopt complete_aliases     # aliased ls needs if file/dir completions work
+# aliased ls needs if file/dir completions work
+setopt complete_aliases
 
 alias where="command -v"
 
+# ls をデフォルトでカラー対応に
 case "${OSTYPE}" in
 freebsd*|darwin*)
     alias ls="ls -G -w"
@@ -78,35 +73,11 @@ linux*)
     ;;
 esac
 
-## terminal configuration
-#
-unset LSCOLORS
-case "${TERM}" in
-xterm)
-    export TERM=xterm-color
-    ;;
-kterm)
-    export TERM=kterm-color
-    # set BackSpace control character
-    stty erase
-    ;;
-cons25)
-    unset LANG
-    export LSCOLORS=ExFxCxdxBxegedabagacad
-    export LS_COLORS='di=36:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
-    zstyle ':completion:*' list-colors 'di=36' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'cd=43;34'
-    ;;
-esac
-
 # set terminal title including current directory
 #
 case "${TERM}" in
 kterm*|xterm*|screen-256color)
-    precmd() {
-        echo -ne "\033]0;${USER}@${HOST%%.*}:${PWD}\007"
-    }
     export LSCOLORS=gxfxcxdxbxegedabagacad
-    export LS_COLORS='di=36:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
     zstyle ':completion:*' list-colors 'di=36' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'cd=43;34'
     ;;
 esac
@@ -129,10 +100,10 @@ fi
 # tmux
 function chpwd() { ls }
 
-# Golang
-export PATH=$PATH:$HOME/go/bin:$GOROOT/bin
+# go
+export PATH=$HOME/go/bin:$GOROOT/bin:$PATH
 
-# Linuxbrew
+# linuxbrew
 export PATH="$HOME/.linuxbrew/bin:$PATH"
 export LD_LIBRARY_PATH="$HOME/.linuxbrew/lib:$LD_LIBRARY_PATH"
 
@@ -182,7 +153,8 @@ function peco-hostname() {
   local selected_hosts=$(cat ~/.ssh/known_hosts | awk -F'[ ,]+' '{print $1}' | peco)
   if [ -n "$selected_hosts" ]; then
       BUFFER="$BUFFER${selected_hosts}"
-      CURSOR=$#BUFFER             # move cursor
+      # move cursor
+      CURSOR=$#BUFFER
   fi
 }
 
