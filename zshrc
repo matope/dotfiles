@@ -162,6 +162,15 @@ function peco-hostname() {
 zle -N peco-hostname
 bindkey '^H' peco-hostname
 
+# git branch selection
+function peco-git-branch() {
+  local branch=$(git branch --all | tr -d '* ' | peco)
+  BUFFER="$BUFFER${branch}"
+  CURSOR=$#BUFFER
+}
+zle -N peco-git-branch
+bindkey '^G' peco-git-branch
+
 # vcs_info
 autoload -Uz add-zsh-hook
 autoload -Uz vcs_info
