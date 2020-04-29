@@ -164,7 +164,7 @@ bindkey '^H' peco-hostname
 
 # git branch selection
 function peco-git-branch() {
-  local branch=$(git branch --all | tr -d '* ' | peco)
+  local branch=$(git branch --sort=-authordate | tr -d '* ' | peco)
   BUFFER="$BUFFER${branch}"
   CURSOR=$#BUFFER
 }
@@ -187,3 +187,10 @@ function +vi-git-config-user(){
 
 # s3curl
 alias s3curl="LC_ALL=C s3curl.pl"
+
+eval "$(hub alias -s)"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
+
+eval "$(direnv hook zsh)"
