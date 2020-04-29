@@ -15,6 +15,7 @@
   meta = cyan
   frag = magenta ul
 [alias]
+  co = checkout
   s = status --branch --short
   d = diff --color-words
   grep = grep --line-number --show-function --color --heading --break
