@@ -188,9 +188,17 @@ function +vi-git-config-user(){
 # s3curl
 alias s3curl="LC_ALL=C s3curl.pl"
 
-eval "$(hub alias -s)"
+if has hub; then
+  eval "$(hub alias -s)"
+fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
 
-eval "$(direnv hook zsh)"
+if has direnv; then
+  eval "$(direnv hook zsh)"
+fi;
+
+function has() {
+  command -v $1 >/dev/null 2>&1
+}
