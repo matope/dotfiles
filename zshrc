@@ -8,26 +8,12 @@ prompt adam2
 export LANG=ja_JP.UTF-8
 export EDITOR=vim
 
-# "cd" を省略可能
-setopt auto_cd
-# cd -[tab] で移動履歴に移動
-setopt auto_pushd
-# コマンドのスペルミスを指摘
-setopt correct
-# 補完候補をコンパクトに表示
-setopt list_packed
-# パス保管候補の末尾のスラッシュを省略しない
-setopt noautoremoveslash
-# 補完候補の表示時にbeepを鳴らさない
-setopt nolistbeep
+setopt correct           # コマンドのスペルミスを指摘
+setopt list_packed       # 補完候補をコンパクトに表示
+setopt noautoremoveslash # パス保管候補の末尾のスラッシュを省略しない
+setopt nolistbeep        # 補完候補の表示時にbeepを鳴らさない
 
-
-## Keybind configuration
-#
-# emacs like keybind (e.x. Ctrl-a goes to head of a line and Ctrl-e goes 
-#   to end of it)
-#
-bindkey -e
+bindkey -e # emacs like keybind.
 
 # historical backward/forward search with linehead string binded to ^P/^N
 autoload history-search-end
@@ -43,18 +29,12 @@ HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
 
-# history の重複を無視
-setopt hist_ignore_dups
-
-# コマンド履歴をターミナル間で共有
-setopt share_history
+setopt hist_ignore_dups # history の重複を無視
+setopt share_history    # コマンド履歴をターミナル間で共有
 
 ## Completion configuration
 autoload -U compinit
 compinit
-
-## zsh editor
-autoload zed
 
 # Alias configuration
 # expand aliases before completing
@@ -63,7 +43,6 @@ setopt complete_aliases
 
 alias where="command -v"
 
-# ls をデフォルトでカラー対応に
 case "${OSTYPE}" in
 freebsd*|darwin*)
     alias ls="ls -G -w"
@@ -73,8 +52,7 @@ linux*)
     ;;
 esac
 
-# set terminal title including current directory
-#
+# lighter ls color.
 case "${TERM}" in
 kterm*|xterm*|screen-256color)
     export LSCOLORS=gxfxcxdxbxegedabagacad
@@ -85,28 +63,19 @@ esac
 
 
 ## load user .zshrc configuration file
-#
 [ -f ~/.zshrc.mine ] && source ~/.zshrc.mine
-
-
-# FROM .bashrc
-export PATH=/opt/local/bin:/opt/local/sbin:~/bin:~/local/bin:~/bin:$PATH
-export MANPATH=/opt/local/man:$MANPATH
-export LD_LIBRARY_PATH=~/local/lib
 
 if [ -f /usr/libexec/java_home ]; then
   export JAVA_HOME=$(/usr/libexec/java_home 2>/dev/null)
 fi
 
-# tmux
+# ls after cd.
 function chpwd() { ls }
 
 # go
-export PATH=$HOME/go/bin:$GOROOT/bin:$PATH
-
-# linuxbrew
-export PATH="$HOME/.linuxbrew/bin:$PATH"
-export LD_LIBRARY_PATH="$HOME/.linuxbrew/lib:$LD_LIBRARY_PATH"
+export PATH=$HOME/go/bin:/usr/local/go/bin:$PATH
+export PATH=$HOME/.linuxbrew/bin:$PATH
+export LD_LIBRARY_PATH=$HOME/.linuxbrew/lib:$LD_LIBRARY_PATH
 
 # url-quote-magic
 autoload -U url-quote-magic
@@ -188,6 +157,10 @@ function +vi-git-config-user(){
 # s3curl
 alias s3curl="LC_ALL=C s3curl.pl"
 
+function has() {
+  command -v $1 >/dev/null 2>&1
+}
+
 if has hub; then
   eval "$(hub alias -s)"
 fi
@@ -198,7 +171,3 @@ export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
 if has direnv; then
   eval "$(direnv hook zsh)"
 fi;
-
-function has() {
-  command -v $1 >/dev/null 2>&1
-}
