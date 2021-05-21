@@ -11,11 +11,10 @@ brew install brew-cask
 
 # インストール
 brew install vim --with-lua
-brew install zsh-completions
 brew install tmux
 brew install reattach-to-user-namespace
-brew install ack
 brew install ag
+brew install ripgrip
 brew install tree
 brew install ctags
 brew install ant
