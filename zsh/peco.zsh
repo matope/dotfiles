@@ -11,7 +11,6 @@ function peco_select_history() {
 }
 setopt hist_ignore_all_dups
 zle -N peco_select_history
-bindkey '^R' peco_select_history
 
 function peco-cdr () {
     local selected_dir=$(cdr -l | awk '{ print $2 }' | peco)
@@ -22,7 +21,6 @@ function peco-cdr () {
     zle clear-screen
 }
 zle -N peco-cdr
-bindkey '^@' peco-cdr
 
 function peco-hostname() {
   local selected_hosts=$(cat ~/.ssh/known_hosts | awk -F'[ ,]+' '{print $1}' | peco)
@@ -34,7 +32,6 @@ function peco-hostname() {
 }
 
 zle -N peco-hostname
-bindkey '^H' peco-hostname
 
 # git branch selection
 function peco-git-branch() {
@@ -43,7 +40,6 @@ function peco-git-branch() {
   CURSOR=$#BUFFER
 }
 zle -N peco-git-branch
-bindkey '^G' peco-git-branch
 
 function peco-src () {
   local selected_dir=$(ghq list -p | peco --query "$LBUFFER")
@@ -54,4 +50,9 @@ function peco-src () {
   zle clear-screen
 }
 zle -N peco-src
+
+bindkey '^R' peco_select_history
+bindkey '^@' peco-cdr
+bindkey '^H' peco-hostname
+bindkey '^G' peco-git-branch
 bindkey '^]' peco-src

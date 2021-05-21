@@ -1,4 +1,3 @@
-# vcs_info
 autoload -Uz add-zsh-hook
 autoload -Uz vcs_info
 setopt PROMPT_SUBST
