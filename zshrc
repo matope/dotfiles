@@ -17,7 +17,7 @@ autoload -U url-quote-magic
 zle -N self-insert url-quote-magic
 
 # PATH
-export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:$PATH
 
 # Go
 export PATH=$HOME/go/bin:/usr/local/go/bin:$PATH
@@ -36,12 +36,19 @@ if [ -f /usr/libexec/java_home ]; then
   export JAVA_HOME=$(/usr/libexec/java_home 2>/dev/null)
 fi
 
-# Python
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init -)"
+# # Python
+# export PYENV_ROOT="$HOME/.pyenv"
+# export PATH="$PYENV_ROOT/bin:$PATH"
+# if command -v pyenv 1>/dev/null 2>&1; then
+#   eval "$(pyenv init -)"
+# fi
+
+# pipenv
+if [ -d /Users/yasuharu/Library/Python/3.8/bin ]; then
+  export PATH=/Users/yasuharu/Library/Python/3.8/bin:$PATH
+  export PIPENV_VENV_IN_PROJECT=true
 fi
+
 
 # ls
 if [[ ${OSTYPE} == "linux"* ]]; then
@@ -76,3 +83,23 @@ alias s3curl="LC_ALL=C s3curl.pl"
 for zshfile in ~/.zsh/*.zsh; do
   source ${zshfile}
 done
+
+#alias vim=nvim
+
+# deno
+
+export DENO_INSTALL="/Users/yasuharu/.deno"
+export PATH="$DENO_INSTALL/bin:$PATH"
+
+# nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+export PATH="/usr/local/opt/php@7.3/bin:$PATH"
+export PATH="/usr/local/opt/php@7.3/sbin:$PATH"
+
+export PATH="$HOME/.poetry/bin:$PATH"
+
+alias ding='terminal-notifier -title "Terminal" -message "Done with task. Exit status: $?" -sound default -activate -activate com.apple.Terminal; tput bel;'
+
+export RPROMPT=$RPROMPT" %F{green}(`uname -m`)%f"
