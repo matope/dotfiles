@@ -1,6 +1,7 @@
 # tap "homebrew/bundle"
 # tap "homebrew/core"
-# tap "wader/tap"
+tap "wader/tap"
+
 brew "fzf"
 brew "gh"
 brew "neovim"
