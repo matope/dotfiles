@@ -32,6 +32,7 @@ kterm*|xterm*|screen-256color)
     ;;
 esac
 
+
 # hub
 if command -v hub >/dev/null 2>&1; then; 
   eval "$(hub alias -s)"
@@ -45,11 +46,10 @@ fi;
 # s3curl
 alias s3curl="LC_ALL=C s3curl.pl"
 
-# Load .zsh files under ~/.zsh directory.
-for zshfile in ~/.zsh/*.zsh; do
-  source ${zshfile}
-done
-
 alias ding='terminal-notifier -title "Terminal" -message "Done with task. Exit status: $?" -sound default -activate -activate com.apple.Terminal; tput bel;'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+for ZSHFILE in $HOME/.zsh/*.zsh; do
+  source ${ZSHFILE}
+done
