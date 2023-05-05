@@ -16,38 +16,6 @@ bindkey -e
 autoload -U url-quote-magic
 zle -N self-insert url-quote-magic
 
-# PATH
-export PATH=$HOME/bin:$PATH
-
-# Go
-export PATH=$HOME/go/bin:/usr/local/go/bin:$PATH
-
-# ElasticBeanstalk
-export PATH=/Users/yasuharu/.ebcli-virtual-env/executables:$PATH
-
-# Linuxbrew
-if [[ ${OSTYPE} == "linux"* ]]; then
-  export PATH=$HOME/.linuxbrew/bin:$PATH
-  export LD_LIBRARY_PATH=$HOME/.linuxbrew/lib:$LD_LIBRARY_PATH
-fi
-
-# Java
-if [ -f /usr/libexec/java_home ]; then
-  export JAVA_HOME=$(/usr/libexec/java_home 2>/dev/null)
-fi
-
-# # Python
-# export PYENV_ROOT="$HOME/.pyenv"
-# export PATH="$PYENV_ROOT/bin:$PATH"
-# if command -v pyenv 1>/dev/null 2>&1; then
-#   eval "$(pyenv init -)"
-# fi
-
-# pipenv
-if [ -d /Users/yasuharu/Library/Python/3.8/bin ]; then
-  export PATH=/Users/yasuharu/Library/Python/3.8/bin:$PATH
-  export PIPENV_VENV_IN_PROJECT=true
-fi
 
 
 # ls
@@ -86,10 +54,6 @@ done
 
 #alias vim=nvim
 
-# deno
-
-export DENO_INSTALL="/Users/yasuharu/.deno"
-export PATH="$DENO_INSTALL/bin:$PATH"
 
 # nvm
 export NVM_DIR="$HOME/.nvm"
@@ -103,3 +67,5 @@ export PATH="$HOME/.poetry/bin:$PATH"
 alias ding='terminal-notifier -title "Terminal" -message "Done with task. Exit status: $?" -sound default -activate -activate com.apple.Terminal; tput bel;'
 
 export RPROMPT=$RPROMPT" %F{green}(`uname -m`)%f"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
