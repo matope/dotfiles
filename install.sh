@@ -5,12 +5,11 @@ DOTFILES_ROOT=$(
   pwd
 )
 
-ln -siv $DOTFILES_ROOT/.profile     $HOME/.profile
-ln -siv $DOTFILES_ROOT/bash_profile $HOME/.bash_profile
-ln -siv $DOTFILES_ROOT/zshrc        $HOME/.zshrc
-ln -siv $DOTFILES_ROOT/zsh          $HOME/.zsh
-ln -siv $DOTFILES_ROOT/.zprofile    $HOME/.zprofile
-ln -siv $DOTFILES_ROOT/tmux.conf    $HOME/.tmux.conf
+ln -siv $DOTFILES_ROOT/.bash_profile $HOME/.bash_profile
+ln -siv $DOTFILES_ROOT/.zshrc        $HOME/.zshrc
+ln -siv $DOTFILES_ROOT/.zsh          $HOME/.zsh
+ln -siv $DOTFILES_ROOT/.zprofile     $HOME/.zprofile
+ln -siv $DOTFILES_ROOT/.tmux.conf    $HOME/.tmux.conf
 
 if which git >/dev/null 2>&1; then
   git config --global include.path      $DOTFILES_ROOT/gitconfig
