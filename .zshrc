@@ -16,8 +16,6 @@ bindkey -e
 autoload -U url-quote-magic
 zle -N self-insert url-quote-magic
 
-
-
 # ls
 if [[ ${OSTYPE} == "linux"* ]]; then
   alias ls="ls --color"
@@ -52,20 +50,6 @@ for zshfile in ~/.zsh/*.zsh; do
   source ${zshfile}
 done
 
-#alias vim=nvim
-
-
-# nvm
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-export PATH="/usr/local/opt/php@7.3/bin:$PATH"
-export PATH="/usr/local/opt/php@7.3/sbin:$PATH"
-
-export PATH="$HOME/.poetry/bin:$PATH"
-
 alias ding='terminal-notifier -title "Terminal" -message "Done with task. Exit status: $?" -sound default -activate -activate com.apple.Terminal; tput bel;'
-
-export RPROMPT=$RPROMPT" %F{green}(`uname -m`)%f"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

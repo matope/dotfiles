@@ -1,0 +1,65 @@
+# Basic Settings
+export PATH=$HOME/bin:$PATH
+export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/lib
+export CPATH=$CPATH:/usr/local/include
+
+# Homebrew
+[[ -f /opt/homebrew/bin/brew ]] && eval "$(/opt/homebrew/bin/brew shellenv)"
+export PATH
+
+# Go
+export PATH=$HOME/go/bin:/usr/local/go/bin:$PATH
+
+# ElasticBeanstalk
+export PATH=/Users/yasuharu/.ebcli-virtual-env/executables:$PATH
+
+# Java
+if [ -f /usr/libexec/java_home ]; then
+  export JAVA_HOME=$(/usr/libexec/java_home 2>/dev/null)
+fi
+
+
+# Setting PATH for Python 3.10
+# The original version is saved in .zprofile.pysave
+PATH="/Library/Frameworks/Python.framework/Versions/3.10/bin:${PATH}"
+
+# # Python
+# export PYENV_ROOT="$HOME/.pyenv"
+# export PATH="$PYENV_ROOT/bin:$PATH"
+# if command -v pyenv 1>/dev/null 2>&1; then
+#   eval "$(pyenv init -)"
+# fi
+
+# pipenv
+if [ -d $HOME/Library/Python/3.8/bin ]; then
+  export PATH=$HOME/Library/Python/3.8/bin:$PATH
+  export PIPENV_VENV_IN_PROJECT=true
+fi
+
+# Cargo
+export PATH="$HOME/.cargo/bin:$PATH"
+
+# Poetry
+export PATH="$HOME/.poetry/bin:$PATH"
+
+# deno
+export DENO_INSTALL="$HOME/.deno"
+export PATH="$DENO_INSTALL/bin:$PATH"
+
+export PATH="$HOME/.poetry/bin:$PATH"
+
+# Google Cloud
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '~/google-cloud-sdk/path.bash.inc' ]; then . '~/google-cloud-sdk/path.bash.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '~/google-cloud-sdk/completion.bash.inc' ]; then . '~/google-cloud-sdk/completion.bash.inc'; fi
+
+# nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# PHP
+export PATH="/usr/local/opt/php@7.3/bin:$PATH"
+export PATH="/usr/local/opt/php@7.3/sbin:$PATH"
