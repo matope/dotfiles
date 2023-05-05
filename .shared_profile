@@ -7,6 +7,12 @@ export CPATH=$CPATH:/usr/local/include
 [[ -f /opt/homebrew/bin/brew ]] && eval "$(/opt/homebrew/bin/brew shellenv)"
 export PATH
 
+# Homebrew(linux)
+if [[ -f /home/linuxbrew/.linuxbrew/bin/brew ]]
+then
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
+
 # Go
 export PATH=$HOME/go/bin:/usr/local/go/bin:$PATH
 
