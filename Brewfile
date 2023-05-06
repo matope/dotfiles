@@ -1,15 +1,18 @@
-# tap "homebrew/bundle"
-# tap "homebrew/core"
-tap "wader/tap"
-
-brew "fzf"
-brew "gh"
-brew "neovim"
-brew "peco"
-brew "pipenv"
-brew "python@3.10"
-brew "python@3.11"
-brew "the_silver_searcher"
+# shell
+brew "zsh"
 brew "tmux"
+brew "fzf"
+brew "peco"
+
+# editor
+brew "neovim"
 brew "vim"
-brew "wader/tap/fq"
+
+# tools
+brew "gh"
+brew "the_silver_searcher"
+
+# Python
+# brew "pipenv"
+# brew "python@3.10"
+# brew "python@3.11"
