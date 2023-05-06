@@ -11,10 +11,9 @@ install:
 	ln -sf $(PWD)/.shared_profile $(HOME)/.shared_profile
 	ln -sf $(PWD)/git             $(HOME)/.config/
 	ln -sf $(PWD)/tmux            $(HOME)/.config/
-
 	mkdir -p $(HOME)/.zsh
 	ln -sf $(PWD)/.zshenv         $(HOME)/.zshenv
 	ln -sf $(PWD)/zsh/.zprofile   $(HOME)/.zsh/.zprofile
 	ln -sf $(PWD)/zsh/.zshrc      $(HOME)/.zsh/.zshrc
-	ln -sf $(PWD)/zsh/completion/ $(HOME)/.zsh/completion
-	ln -sf $(PWD)/zsh/conf.d/     $(HOME)/.zsh/conf.d
+	ln -sf $(PWD)/zsh/completion  $(HOME)/.zsh/
+	ln -sf $(PWD)/zsh/conf.d      $(HOME)/.zsh/
