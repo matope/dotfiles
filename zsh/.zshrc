@@ -50,6 +50,6 @@ alias ding='terminal-notifier -title "Terminal" -message "Done with task. Exit s
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-for ZSHFILE in $HOME/.zsh/*.zsh; do
+for ZSHFILE in $HOME/.zsh/conf.d/*.zsh; do
   source ${ZSHFILE}
 done

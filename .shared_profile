@@ -1,3 +1,5 @@
+#.shared_profile is sourced by .bash_profile and .zprofile.
+
 # Basic Settings
 export PATH=$HOME/bin:$PATH
 export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/lib
