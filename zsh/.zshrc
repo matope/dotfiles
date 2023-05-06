@@ -48,6 +48,19 @@ alias s3curl="LC_ALL=C s3curl.pl"
 
 alias ding='terminal-notifier -title "Terminal" -message "Done with task. Exit status: $?" -sound default -activate -activate com.apple.Terminal; tput bel;'
 
+# 便利ショートカット
+alias ll='ls -alF'
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias g='git'
+alias ga='git add'
+alias gco='git commit'
+alias gd='git diff'
+alias gp='git push'
+alias gs='git status'
+
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 for ZSHFILE in $HOME/.zsh/conf.d/*.zsh; do
