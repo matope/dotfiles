@@ -20,8 +20,8 @@ install:
 
 install-vim:
 	ln -sf $(PWD)/.vimrc        $(HOME)/.vimrc
-	mkdir -p $(HOME)/vim
-	ln -sf $(PWD)/vim/conf      $(HOME)/.vim
-	ln -sf $(PWD)/vim/templates $(HOME)/.vim
+	mkdir -p $(HOME)/.vim
+	ln -sf $(PWD)/vim/conf      $(HOME)/.vim/
+	ln -sf $(PWD)/vim/templates $(HOME)/.vim/
 	curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 	vim +":PlugInstall" +":GoInstallBinaries" +:q +:q
