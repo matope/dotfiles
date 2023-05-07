@@ -9,6 +9,7 @@ install:
 	ln -sf $(PWD)/.bash_profile   $(HOME)/.bash_profile
 	ln -sf $(PWD)/.bashrc         $(HOME)/.bashrc
 	ln -sf $(PWD)/.shared_profile $(HOME)/.shared_profile
+	mkdir -p $(HOME)/.config
 	ln -sf $(PWD)/git             $(HOME)/.config/
 	ln -sf $(PWD)/tmux            $(HOME)/.config/
 	mkdir -p $(HOME)/.zsh
