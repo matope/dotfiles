@@ -10,10 +10,6 @@ Plug 'jistr/vim-nerdtree-tabs'
 " Plug 'git://github.com/jimsei/winresizer.git'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
-Plug 'Shougo/ddc.vim'
-
-" Plug 'vim-denops/denops.vim'
-
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
 

@@ -25,3 +25,5 @@
   ggg = log --decorate --graph --stat --patch
   colordiff = difftool -y -x "colordiff -y -W $COLUMNS" | less -R
   vimdiff = difftool --tool vimdiff
+[init]
+	defaultBranch = main

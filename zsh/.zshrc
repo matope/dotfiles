@@ -50,6 +50,7 @@ alias ding='terminal-notifier -title "Terminal" -message "Done with task. Exit s
 
 # 便利ショートカット
 alias ll='ls -alF'
+alias exa='exa -la'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'

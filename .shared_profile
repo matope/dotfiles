@@ -26,6 +26,8 @@ if [ -f /usr/libexec/java_home ]; then
   export JAVA_HOME=$(/usr/libexec/java_home 2>/dev/null)
 fi
 
+# Dart
+export PATH="$PATH":"$HOME/.pub-cache/bin"
 
 # Setting PATH for Python 3.10
 # The original version is saved in .zprofile.pysave
@@ -41,6 +43,12 @@ PATH="/Library/Frameworks/Python.framework/Versions/3.10/bin:${PATH}"
 # pipenv
 if [ -d $HOME/Library/Python/3.8/bin ]; then
   export PATH=$HOME/Library/Python/3.8/bin:$PATH
+  export PIPENV_VENV_IN_PROJECT=true
+fi
+
+# pipenv
+if [ -d $HOME/Library/Python/3.9/bin ]; then
+  export PATH=$HOME/Library/Python/3.9/bin:$PATH
   export PIPENV_VENV_IN_PROJECT=true
 fi
 
